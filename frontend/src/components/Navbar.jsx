@@ -72,7 +72,7 @@ export default function Navbar({ isMenuOpen, setIsMenuOpen, getTotalItems }) {
             <div className="flex flex-col space-y-2 pt-4">
               <Link to="/" className="nav-link-mobile">Beranda</Link>
               <Link to="/kategori" className="nav-link-mobile">Kategori</Link>
-              <Link to="/tentang" className="nav-link-mobile">Tentang</Link>
+              <Link to="/galeri" className="nav-link-mobile">Tentang</Link>
               <Link to="/kontak" className="nav-link-mobile">Kontak</Link>
             </div>
           </motion.nav>

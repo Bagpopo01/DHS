@@ -1,21 +1,33 @@
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { products } from '../data/products';
 import { Heart } from 'lucide-react';
 
 export default function ProductDetail() {
   const { id } = useParams();
+  const navigate = useNavigate();
   const product = products.find((p) => p.id === parseInt(id));
+
+  if (!product) {
+    return (
+      <div className="max-w-6xl mx-auto px-4 py-12 text-center">
+        <h2 className="text-2xl font-bold text-red-600 mb-4">Produk tidak ditemukan</h2>
+        <button onClick={() => navigate('/kategori')} className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+          Kembali ke Kategori
+        </button>
+      </div>
+    );
+  }
 
   const galleryImages = [
     product.image,
     'https://source.unsplash.com/random/300x200?medal',
-    'https://source.unsplash.com/random/300x200?karate',
+    'https://source.unsplash.com/random/300x200?trophy',
     'https://source.unsplash.com/random/300x200?event',
   ];
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-12">
-      <button onClick={() => history.back()} className="text-blue-600 mb-6 hover:underline">
+      <button onClick={() => navigate(-1)} className="text-blue-600 mb-6 hover:underline">
         ← Kembali ke Beranda
       </button>
 
