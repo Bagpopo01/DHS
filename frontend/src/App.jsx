@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
@@ -8,7 +8,6 @@ import Kontak from './pages/Kontak';
 import Kategori from './pages/Kategori';
 import { useCart } from './hooks/useCart';
 import { useFavorites } from './hooks/useFavorites';
-import { products } from './data/products';
 
 function App() {
   const { cartItems, addToCart, getTotalItems } = useCart();
@@ -16,6 +15,15 @@ function App() {
 
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
+  const [products, setProducts] = useState([]); // ambil dari backend
+
+  // Fetch data dari backend Laravel
+  useEffect(() => {
+    fetch("http://127.0.0.1:8000/api/products")
+      .then(res => res.json())
+      .then(data => setProducts(data))
+      .catch(err => console.error("Error fetch products:", err));
+  }, []);
 
   const categories = [
     { id: 'all', name: 'Semua' },
@@ -46,14 +54,12 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-100">
-      {/* ✅ Navbar tampil di semua halaman */}
       <Navbar
         isMenuOpen={false}
         setIsMenuOpen={() => {}}
         getTotalItems={getTotalItems}
       />
 
-      {/* ✅ Routing semua halaman */}
       <Routes>
         <Route
           path="/"
