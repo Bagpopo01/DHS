@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Filament\Resources\Products;
+namespace App\Filament\Resources;
 
-use App\Filament\Resources\Products\Pages\CreateProduct;
-use App\Filament\Resources\Products\Pages\EditProduct;
-use App\Filament\Resources\Products\Pages\ListProducts;
-use App\Filament\Resources\Products\Schemas\ProductForm;
-use App\Filament\Resources\Products\Tables\ProductsTable;
+use App\Filament\Resources\ProductResource\Pages\CreateProduct;
+use App\Filament\Resources\ProductResource\Pages\EditProduct;
+use App\Filament\Resources\ProductResource\Pages\ListProducts;
+use App\Filament\Resources\ProductResource\Schemas\ProductForm;
+use App\Filament\Resources\ProductResource\Tables\ProductTable;
 use App\Models\Product;
 use BackedEnum;
+use UnitEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
@@ -18,6 +19,7 @@ class ProductResource extends Resource
 {
     protected static ?string $model = Product::class;
 
+    protected static UnitEnum|string|null $navigationGroup = 'Product Management';
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
     protected static ?string $recordTitleAttribute = 'name';
@@ -29,14 +31,12 @@ class ProductResource extends Resource
 
     public static function table(Table $table): Table
     {
-        return ProductsTable::configure($table);
+        return ProductTable::configure($table);
     }
 
     public static function getRelations(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public static function getPages(): array

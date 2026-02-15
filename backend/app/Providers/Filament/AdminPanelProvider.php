@@ -38,6 +38,11 @@ class AdminPanelProvider extends PanelProvider
             ->pages([
                 Dashboard::class,
             ])
+            ->resources([
+                \App\Filament\Resources\Categories\CategoryResource::class,
+                
+            ])
+
             ->navigationGroups([
                 'Produk',
                 'Pesanan',

@@ -11,12 +11,17 @@ return new class extends Migration
      */
    public function up(): void
 {
-    Schema::create('products', function (Blueprint $table) {
-        $table->id();
-        $table->string('name');
-        $table->decimal('price', 10, 2)->nullable();
-        $table->timestamps();
-    });
+Schema::table('products', function (Blueprint $table) {
+    $table->foreignId('category_id')->nullable()->constrained('categories');
+    $table->json('tags')->nullable(); // simpan banyak tag
+    $table->text('description')->nullable();
+    $table->json('images')->nullable(); // simpan banyak foto
+    $table->string('sku')->nullable();
+    $table->string('size')->nullable();
+    $table->string('material')->nullable();
+    $table->text('technique')->nullable();
+    $table->string('box')->nullable();
+});
 }
 
     /**

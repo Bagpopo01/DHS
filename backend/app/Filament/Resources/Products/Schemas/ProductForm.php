@@ -1,37 +1,31 @@
 <?php
 
-namespace App\Filament\Resources\Products\Schemas;
+namespace App\Filament\Resources\ProductResource\Schemas;
 
-use Filament\Forms\Form;
-use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Textarea;
-use Filament\Forms\Components\FileUpload;
+use Filament\Schemas\Schema;
+use Filament\Forms;
 
 class ProductForm
 {
-    public static function configure(Form $form): Form
+    public static function configure(Schema $schema): Schema
     {
-        return $form
-            ->schema([
-                TextInput::make('name')
-                    ->label('Nama Produk')
-                    ->required()
-                    ->maxLength(100),
+        return $schema->schema([
+            Forms\Components\TextInput::make('sku')->label('SKU')->required(),
+            Forms\Components\TextInput::make('name')->label('Nama Produk')->required(),
+            Forms\Components\TextInput::make('size')->label('Ukuran'),
+            Forms\Components\TextInput::make('material')->label('Bahan'),
+            Forms\Components\TextInput::make('technique')->label('Teknik'),
+            Forms\Components\TextInput::make('box')->label('Box'),
 
-                TextInput::make('price')
-                    ->label('Harga')
-                    ->numeric()
-                    ->prefix('Rp')
-                    ->required(),
+            Forms\Components\Select::make('categories')
+                ->label('Kategori')
+                ->multiple()
+                ->relationship('categories', 'name'),
 
-                Textarea::make('description')
-                    ->label('Deskripsi')
-                    ->rows(3),
-
-                FileUpload::make('image')
-                    ->label('Foto Produk')
-                    ->image()
-                    ->directory('products'),
-            ]);
+            Forms\Components\Select::make('tags')
+                ->label('Tag')
+                ->multiple()
+                ->relationship('tags', 'name'),
+        ]);
     }
 }

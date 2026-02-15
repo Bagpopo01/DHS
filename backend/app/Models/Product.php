@@ -9,5 +9,30 @@ class Product extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'price'];
+    // Field yang bisa diisi mass-assignment
+    protected $fillable = [
+        'sku',
+        'name',
+        'size',
+        'material',
+        'technique',
+        'box',
+        'price',
+    ];
+
+    /**
+     * Relasi ke kategori (many-to-many)
+     */
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class);
+    }
+
+    /**
+     * Relasi ke tag (many-to-many)
+     */
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class);
+    }
 }

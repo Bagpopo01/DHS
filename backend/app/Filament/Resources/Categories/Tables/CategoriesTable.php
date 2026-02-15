@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Resources\ProductResource\Tables;
+namespace App\Filament\Resources\Categories\Tables;
 
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
@@ -8,10 +8,11 @@ use Filament\Actions\EditAction;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\ViewAction;
 use Filament\Tables\Table;
-use Filament\Actions\ActionGroup;
+use Filament\Actions\ActionGroup;   // ✅ ini yang benar
 use Filament\Tables\Columns\TextColumn;
 
-class ProductTable
+
+class CategoriesTable
 {
     public static function configure(Table $table): Table
     {
@@ -20,24 +21,11 @@ class ProductTable
                 TextColumn::make('rowNumber')
                     ->label('No')
                     ->rowIndex(),
-
-                TextColumn::make('sku')->label('SKU'),
-                TextColumn::make('name')->label('Nama Produk'),
-                TextColumn::make('size')->label('Ukuran'),
-                TextColumn::make('material')->label('Bahan'),
-                TextColumn::make('technique')->label('Teknik'),
-                TextColumn::make('box')->label('Box'),
-
-                TextColumn::make('categories.name')
-                    ->label('Kategori')
-                    ->badge(),
-
-                TextColumn::make('tags.name')
-                    ->label('Tag')
-                    ->badge(),
+                TextColumn::make('name')->label('Nama'),
+                TextColumn::make('created_at')->label('Dibuat')->date(),
             ])
             ->filters([
-                // Tambahkan filter jika perlu
+                //
             ])
             ->recordActions([
                 ActionGroup::make([
