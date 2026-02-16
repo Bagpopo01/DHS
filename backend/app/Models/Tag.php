@@ -2,16 +2,18 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Product;
 
 class Tag extends Model
 {
-    // field yang bisa diisi
+    use HasFactory;
+
     protected $fillable = ['name'];
 
-    // kalau nanti ada relasi ke kategori
-    public function categories()
+    public function products()
     {
-        return $this->belongsToMany(Category::class);
+        return $this->belongsToMany(Product::class, 'product_tag', 'tag_id', 'product_id');
     }
 }

@@ -6,27 +6,28 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
-       Schema::table('products', function (Blueprint $table) {
-    $table->string('sku')->nullable()->unique();
-    $table->string('size')->nullable();       // Ukuran
-    $table->string('material')->nullable();   // Bahan
-    $table->text('technique')->nullable();    // Teknik
-    $table->string('box')->nullable();        // Box
-});
+        Schema::table('products', function (Blueprint $table) {
+            $table->foreignId('category_id')->nullable()->constrained('categories');
+            $table->json('tags')->nullable();
+            $table->json('images')->nullable();
+            $table->string('sku')->nullable();
+            $table->string('size')->nullable();
+            $table->string('material')->nullable();
+            $table->text('technique')->nullable();
+            $table->string('box')->nullable();
+        });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::table('products', function (Blueprint $table) {
-            //
+            $table->dropForeign(['category_id']);
+            $table->dropColumn([
+                'category_id','tags','images','sku',
+                'size','material','technique','box'
+            ]);
         });
     }
 };

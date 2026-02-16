@@ -4,35 +4,37 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Category;
+use App\Models\Tag;
 
 class Product extends Model
 {
     use HasFactory;
 
-    // Field yang bisa diisi mass-assignment
     protected $fillable = [
-        'sku',
         'name',
+        'sku',
+        'price',
+        'description',
+        'category_id',
+        'images',
         'size',
         'material',
         'technique',
         'box',
-        'price',
     ];
 
-    /**
-     * Relasi ke kategori (many-to-many)
-     */
-    public function categories()
+    protected $casts = [
+        'images' => 'array',
+    ];
+
+    public function category()
     {
-        return $this->belongsToMany(Category::class);
+        return $this->belongsTo(Category::class);
     }
 
-    /**
-     * Relasi ke tag (many-to-many)
-     */
     public function tags()
     {
-        return $this->belongsToMany(Tag::class);
+        return $this->belongsToMany(Tag::class, 'product_tag', 'product_id', 'tag_id');
     }
 }
