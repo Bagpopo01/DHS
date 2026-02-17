@@ -11,6 +11,11 @@ use Filament\Tables\Table;
 use Filament\Actions\ActionGroup;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Filters\SelectFilter;
+use Filament\Forms\Components\FileUpload;
+use Illuminate\Support\Facades\Storage;
+use App\Models\Product;
+
 
 class ProductsTable
 {
@@ -44,14 +49,16 @@ class ProductsTable
                     ->sortable()
                     ->searchable(),
 
-               TextColumn::make('tags')
-    ->label('Tag')
-    ->badge() // Menampilkan tag dalam bentuk kapsul/badge (lebih rapi)
-   
-    ->searchable(),
-                ImageColumn::make('images')
-                    ->label('Gambar')
-                    ->circular(),
+ImageColumn::make('images.0')
+    ->label('Gambar Utama')
+    ->getStateUsing(function ($record) {
+        $image = $record->images[0] ?? null;
+        if (! $image) return null;
+
+        // Jika gambar sudah ada di public frontend, arahkan langsung ke URL-nya
+        return asset('storage/' . $image); 
+    })
+    ->square(),
 
                 TextColumn::make('size')->label('Ukuran'),
                 TextColumn::make('material')->label('Material'),
@@ -69,8 +76,7 @@ class ProductsTable
                     ->sortable(),
             ])
             ->filters([
-                // contoh filter kategori
-                \Filament\Tables\Filters\SelectFilter::make('category_id')
+                SelectFilter::make('category_id')
                     ->relationship('category', 'name')
                     ->label('Kategori'),
             ])

@@ -32,9 +32,15 @@ class Product extends Model
     {
         return $this->belongsTo(Category::class);
     }
-
-    public function tags()
-    {
-        return $this->belongsToMany(Tag::class, 'product_tag', 'product_id', 'tag_id');
+    public function getMainImageAttribute()
+{
+    if (is_array($this->images)) {
+        return $this->images[0] ?? null;
     }
+
+    return $this->images;
+}
+
+
+   
 }
