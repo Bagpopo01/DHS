@@ -10,7 +10,8 @@ use Filament\Actions\ViewAction;
 use Filament\Tables\Table;
 use Filament\Actions\ActionGroup;   // ✅ ini yang benar
 use Filament\Tables\Columns\TextColumn;
-
+use Illuminate\Support\Facades\Storage;
+use Filament\Tables\Columns\ImageColumn;
 
 class CategoriesTable
 {
@@ -18,12 +19,23 @@ class CategoriesTable
     {
         return $table
             ->columns([
-                TextColumn::make('rowNumber')
-                    ->label('No')
-                    ->rowIndex(),
-                TextColumn::make('name')->label('Nama'),
-                TextColumn::make('created_at')->label('Dibuat')->date(),
-            ])
+                
+    TextColumn::make('rowNumber')
+        ->label('No')
+        ->rowIndex(),
+
+    TextColumn::make('name')->label('Nama'),
+
+    ImageColumn::make('image')
+    ->disk('public')
+    ->label('Foto')
+    ->square(),
+
+    TextColumn::make('created_at')
+        ->label('Dibuat')
+        ->date(),
+])
+            
             ->filters([
                 //
             ])

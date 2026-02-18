@@ -12,9 +12,14 @@ class Category extends Model
      * @var array
      */
     protected $fillable = [
-        'name',
+        'name', 'image'
         
     ];
+// app/Models/Category.php
+public function getImageUrlAttribute()
+{
+    return $this->image ? \Illuminate\Support\Facades\Storage::url($this->image) : null;
+}
 
     /**
      * posts

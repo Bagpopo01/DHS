@@ -3,12 +3,16 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\Api\VideoShortController;
+
+Route::apiResource('video-shorts', VideoShortController::class);
+
+Route::get('/categories', function () {
+    return \App\Models\Category::select('id','name','image')->get();
+});
 
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
-
-Route::get('/products', [ProductController::class, 'index']);
-Route::post('/products', [ProductController::class, 'store']);
 
 Route::apiResource('products', ProductController::class);

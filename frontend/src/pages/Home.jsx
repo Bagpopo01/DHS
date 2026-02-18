@@ -6,6 +6,10 @@ import AboutSection from '../components/AboutSection';
 import ContactSection from '../components/ContactSection';
 import Footer from '../components/Footer';
 import { Toaster } from '@/components/ui/toaster';
+import Categories from "../components/Categories";
+import VideoShort from "../components/VideoShort";
+
+
 
 export default function Home({
   searchTerm,
@@ -23,7 +27,7 @@ export default function Home({
   return (
     <>
       <HeroSection />
-
+      <Categories />
       <SearchBar
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}
@@ -31,6 +35,8 @@ export default function Home({
         setSelectedCategory={setSelectedCategory}
         categories={categories}
       />
+    
+      <VideoShort />
 
       <FeaturedProducts
         filteredProducts={filteredProducts}
