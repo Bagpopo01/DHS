@@ -28,13 +28,7 @@ export default function Home({
     <>
       <HeroSection />
       <Categories />
-      <SearchBar
-        searchTerm={searchTerm}
-        setSearchTerm={setSearchTerm}
-        selectedCategory={selectedCategory}
-        setSelectedCategory={setSelectedCategory}
-        categories={categories}
-      />
+      
     
       <VideoShort />
 

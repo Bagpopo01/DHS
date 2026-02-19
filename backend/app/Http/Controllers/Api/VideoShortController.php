@@ -9,11 +9,10 @@ use Illuminate\Http\Request;
 class VideoShortController extends Controller
 {
     // Ambil semua video dengan pagination
-    public function index()
-    {
-        return response()->json(VideoShort::paginate(10));
-    }
-
+ public function index()
+{
+    return VideoShort::paginate(10);
+}
     // Tambah video baru
     public function store(Request $request)
     {

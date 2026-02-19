@@ -12,21 +12,32 @@ class VideoShortForm
         return $schema->schema([
             Forms\Components\TextInput::make('title')
                 ->label('Judul Video')
-                ->required(),
+                ->required()
+                ->columnSpan(1), // hanya ambil setengah lebar
 
             Forms\Components\FileUpload::make('thumbnail')
                 ->label('Thumbnail')
-                ->disk('public') // simpan di public
-                ->image() // otomatis preview gambar
-                ->directory('shorts') // folder di storage/app/public/shorts
-                ->required(),
+                ->disk('public')
+                ->image()
+                ->directory('shorts')
+                ->required()
+                ->columnSpan(5), // thumbnail juga setengah lebar
 
             Forms\Components\FileUpload::make('video_url')
                 ->label('Video File')
                 ->disk('public')
-                ->directory('videos') // folder di storage/app/public/videos
-                ->acceptedFileTypes(['video/mp4','video/webm'])
-                ->maxSize(51200), // max 50MB
-        ]);
+                ->directory('videos')
+                ->visibility('public')
+                ->acceptedFileTypes([
+                    'video/mp4',
+                    'video/webm',
+                    'video/avi',
+                    'video/mov',
+                    'application/octet-stream',
+                ])
+                ->maxSize(102400)
+                ->preserveFilenames()
+                ->columnSpan(2), // form upload video lebih kecil
+        ])->columns(4); // atur grid jadi 2 kolom
     }
 }
