@@ -4,6 +4,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Api\VideoShortController;
+use App\Models\Client;
+
+
+
 
 Route::apiResource('video-shorts', VideoShortController::class);
 Route::get('/video-shorts', [VideoShortController::class, 'index']);
@@ -14,5 +18,8 @@ Route::get('/categories', function () {
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
+Route::get('/clients', function () {
+    return Client::all();
+});
 
 Route::apiResource('products', ProductController::class);

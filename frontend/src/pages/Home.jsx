@@ -8,6 +8,9 @@ import Footer from '../components/Footer';
 import { Toaster } from '@/components/ui/toaster';
 import Categories from "../components/Categories";
 import VideoShort from "../components/VideoShort";
+import WhyChooseUs from '../components/WhychooseUs';
+import HowToOrder from '../components/HowToOrder';
+import CatalogSection from '../components/CatalogSection';
 
 
 
@@ -31,7 +34,7 @@ export default function Home({
       
     
       <VideoShort />
-
+      <CatalogSection />
       <FeaturedProducts
         filteredProducts={filteredProducts}
         favorites={favorites}
@@ -42,6 +45,8 @@ export default function Home({
 
       <Clients clients={clients} />
       <AboutSection />
+      <WhyChooseUs />
+      <HowToOrder />
       <ContactSection />
       <Footer />
       <Toaster />

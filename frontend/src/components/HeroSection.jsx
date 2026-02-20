@@ -2,7 +2,6 @@ import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import logo from '../assets/LOGO.png';
 
-
 export default function HeroSection() {
   return (
     <section id="home" className="relative py-20 overflow-hidden">
@@ -23,8 +22,28 @@ export default function HeroSection() {
               Kamu punya ide, kami punya solusi. Diameter Souvenir, tempat kreativitas jadi nyata
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button className="btn-primary">Jelajahi Produk</Button>
-              <Button className="btn-secondary">Custom Souvenir</Button>
+              {/* Tombol ke halaman kategori */}
+              <Button
+                className="btn-primary"
+                onClick={() => {
+                  window.location.href = 'http://localhost:5173/kategori';
+                }}
+              >
+                Jelajahi Produk
+              </Button>
+
+              {/* Tombol ke WhatsApp */}
+              <Button
+                className="btn-secondary"
+                onClick={() => {
+                  window.open(
+                    'https://wa.me/6281234567890?text=Halo%20Diameter%20Souvenir,%20saya%20ingin%20custom%20souvenir',
+                    '_blank'
+                  );
+                }}
+              >
+                Custom Souvenir
+              </Button>
             </div>
           </motion.div>
 

@@ -18,18 +18,23 @@ export default function VideoShorts() {
           Koleksi Souvenir Video
         </h2>
 
-<div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 justify-center">
+<div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-1 max-w-fit mx-auto">
   {shorts.map((item) => (
     <div
       key={item.id}
-      className="cursor-pointer transform transition-transform duration-300 hover:scale-105 mx-auto"
-      onClick={() => setActiveVideo(item.video_full_url)}
+      className="cursor-pointer transform transition-transform duration-300 hover:scale-105"
+      onClick={() =>
+        setActiveVideo(
+          item.video_full_url?.includes("watch?v=")
+            ? item.video_full_url.replace("watch?v=", "embed/")
+            : item.video_full_url
+        )
+      }
     >
-      {/* Thumbnail portrait ramping */}
       <img
         src={item.thumbnail_url}
         alt={item.title}
-        className="w-[180px] h-[280px] object-cover rounded-lg"
+        className="w-[160px] h-[240px] object-cover rounded-lg"
       />
     </div>
   ))}
