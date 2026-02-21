@@ -9,6 +9,8 @@ import {
   PenTool,
   Package,
   Wallet,
+  CheckCircle2,
+  ChevronRight
 } from "lucide-react";
 
 export default function Kontak() {
@@ -21,87 +23,134 @@ export default function Kontak() {
   ];
 
   const steps = [
-    { icon: <MessageCircle className="w-6 h-6 text-blue-600" />, title: "Hubungi CS" },
-    { icon: <FileText className="w-6 h-6 text-blue-600" />, title: "Penawaran / Invoice" },
-    { icon: <CreditCard className="w-6 h-6 text-blue-600" />, title: "DP Minimal 4%" },
-    { icon: <PenTool className="w-6 h-6 text-blue-600" />, title: "Masuk Desain" },
-    { icon: <Package className="w-6 h-6 text-blue-600" />, title: "Barang Jadi" },
-    { icon: <Wallet className="w-6 h-6 text-blue-600" />, title: "Pelunasan" },
-  ];
-
-  const contacts = [
-    { icon: <Phone className="w-6 h-6 text-blue-600" />, label: "Telepon", value: "+62 851 5888 7675" },
-    { icon: <Mail className="w-6 h-6 text-blue-600" />, label: "Email", value: "info@diametersouvenir.com" },
-    { icon: <MapPin className="w-6 h-6 text-blue-600" />, label: "Alamat", value: "Jl. Contoh No. 123, Yogyakarta" },
+    { icon: <MessageCircle className="w-5 h-5" />, title: "Hubungi CS" },
+    { icon: <FileText className="w-5 h-5" />, title: "Penawaran / Invoice" },
+    { icon: <CreditCard className="w-5 h-5" />, title: "DP Minimal 40%" },
+    { icon: <PenTool className="w-5 h-5" />, title: "Masuk Desain" },
+    { icon: <Package className="w-5 h-5" />, title: "Barang Jadi" },
+    { icon: <Wallet className="w-5 h-5" />, title: "Pelunasan" },
   ];
 
   return (
-    <div className="container mx-auto px-4 py-12">
-      {/* Customer Relation Officers */}
-      <h1 className="text-3xl font-bold text-blue-700 mb-8 text-center">
-        Customer Relation Officers
-      </h1>
-      <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 mb-12">
-        {officers.map((officer, index) => (
-          <div key={index} className="border rounded-lg p-4 shadow text-center">
-            <div className="w-20 h-20 mx-auto bg-gray-200 rounded-full mb-4"></div>
-            <h3 className="font-bold text-blue-700">{officer.name}</h3>
-            <p className="text-sm text-gray-600">{officer.role}</p>
-            <a
-              href={`https://wa.me/${officer.phone}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-3 inline-flex items-center gap-2 bg-green-600 text-white px-3 py-1 rounded hover:bg-green-700"
-            >
-              <MessageCircle className="w-4 h-4" /> WhatsApp
-            </a>
-          </div>
-        ))}
+    <div className="bg-[#fcfcfc] min-h-screen font-sans text-gray-800 pb-20">
+      {/* HEADER SECTION */}
+      <div className="bg-white border-b border-gray-100 py-16 mb-12 shadow-sm text-center">
+        <h1 className="text-4xl font-black italic tracking-tighter text-blue-900 mb-2 uppercase">
+          Contact <span className="text-blue-600">Support</span>
+        </h1>
+        <p className="text-[10px] uppercase tracking-[0.4em] font-bold text-gray-400">
+          Konsultasi Gratis & Respon Cepat Untuk Anda
+        </p>
       </div>
 
-      {/* Cara Order */}
-      <h2 className="text-2xl font-semibold text-blue-900 mb-6 text-center">
-        Cara Order
-      </h2>
-      <div className="grid md:grid-cols-3 gap-6 mb-12">
-        {steps.map((step, index) => (
-          <div
-            key={index}
-            className="bg-white border rounded-lg shadow p-6 flex flex-col items-center text-center hover:shadow-lg transition"
-          >
-            <div className="mb-4">{step.icon}</div>
-            <h3 className="font-semibold text-blue-700">{step.title}</h3>
+      <div className="max-w-7xl mx-auto px-4">
+        {/* CUSTOMER RELATION OFFICERS */}
+        <section className="mb-20">
+          <div className="flex items-center gap-4 mb-10">
+            <h2 className="text-lg font-black uppercase tracking-widest text-blue-900 shrink-0">Our Officers</h2>
+            <div className="h-px bg-gray-100 w-full"></div>
           </div>
-        ))}
-      </div>
-
-      {/* Hubungi Kami */}
-      <h2 className="text-2xl font-semibold text-blue-900 mb-6 text-center">
-        Hubungi Kami
-      </h2>
-      <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-        {contacts.map((contact, index) => (
-          <div
-            key={index}
-            className="bg-purple-50 p-6 rounded-lg shadow flex flex-col items-center text-center hover:shadow-md transition"
-          >
-            <div className="mb-3">{contact.icon}</div>
-            <h3 className="font-semibold text-blue-700">{contact.label}</h3>
-            <p className="text-gray-700 text-sm">{contact.value}</p>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+            {officers.map((officer, index) => (
+              <div key={index} className="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all text-center group">
+                <div className="w-20 h-20 mx-auto bg-blue-50 rounded-full mb-4 flex items-center justify-center text-blue-200 group-hover:scale-110 transition-transform">
+                    {/* Placeholder Avatar */}
+                    <div className="w-16 h-16 bg-gray-100 rounded-full border-4 border-white shadow-inner flex items-center justify-center italic font-black text-gray-300">DHS</div>
+                </div>
+                <h3 className="font-bold text-blue-900 text-sm mb-1">{officer.name}</h3>
+                <p className="text-[10px] text-gray-400 uppercase font-bold mb-4 tracking-tighter">{officer.role}</p>
+                <a
+                  href={`https://wa.me/${officer.phone}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-green-600 text-white text-[10px] font-black py-2.5 rounded-full transition-all shadow-lg shadow-green-100"
+                >
+                  <MessageCircle className="w-3.5 h-3.5" /> WHATSAPP
+                </a>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
+        </section>
 
-      {/* Standar Layanan */}
-      <div className="bg-purple-50 p-6 rounded-lg shadow">
-        <h3 className="text-xl font-semibold text-blue-900 mb-4">Standar Layanan</h3>
-        <ul className="list-disc pl-6 space-y-2 text-gray-700 text-sm">
-          <li>Dukungan administrasi & faktur pajak instansi.</li>
-          <li>Privasi data dan informasi klien terjamin.</li>
-          <li>Perubahan pesanan tidak dapat dilakukan setelah produksi berjalan.</li>
-          <li>Garansi revisi & penggantian sesuai standar kualitas.</li>
-          <li>Klaim garansi memerlukan dokumentasi unboxing.</li>
-        </ul>
+        {/* ALUR PEMESANAN - MODERN STEPPER */}
+        <section className="mb-20">
+            <div className="bg-blue-900 rounded-3xl p-10 shadow-2xl relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-64 h-64 bg-blue-800 rounded-full -mr-32 -mt-32 opacity-50"></div>
+                <h2 className="relative z-10 text-xl font-black text-white uppercase tracking-widest mb-10 text-center italic">Alur Pemesanan <span className="text-blue-400">Mudah</span></h2>
+                <div className="relative z-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                    {steps.map((step, index) => (
+                    <div key={index} className="flex flex-col items-center group">
+                        <div className="w-12 h-12 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl flex items-center justify-center text-blue-400 mb-4 group-hover:bg-blue-500 group-hover:text-white transition-all duration-500">
+                            {step.icon}
+                        </div>
+                        <h3 className="text-[10px] font-bold text-blue-100 text-center uppercase tracking-widest leading-tight">{step.title}</h3>
+                        {index < steps.length - 1 && (
+                            <div className="hidden lg:block absolute -right-2 top-6 text-white/20">
+                                <ChevronRight className="w-4 h-4" />
+                            </div>
+                        )}
+                    </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
+          {/* HUBUNGI KAMI */}
+          <div className="lg:col-span-7">
+            <div className="flex items-center gap-4 mb-8">
+                <h2 className="text-lg font-black uppercase tracking-widest text-blue-900 shrink-0">Company Info</h2>
+                <div className="h-px bg-gray-100 w-full"></div>
+            </div>
+            <div className="grid sm:grid-cols-2 gap-6">
+                {[
+                    { icon: <Phone className="w-5 h-5 text-blue-600" />, label: "Call Center", value: "+62 851 5888 7675" },
+                    { icon: <Mail className="w-5 h-5 text-blue-600" />, label: "Official Email", value: "info@diametersouvenir.com" },
+                    { icon: <MapPin className="w-5 h-5 text-blue-600" />, label: "Workshop & Office", value: "Jl. Contoh No. 123, Yogyakarta" },
+                ].map((contact, index) => (
+                <div key={index} className="bg-white border border-gray-100 p-6 rounded-2xl flex items-start gap-4 hover:shadow-md transition-shadow">
+                    <div className="p-3 bg-blue-50 rounded-xl text-blue-600">
+                        {contact.icon}
+                    </div>
+                    <div>
+                        <h3 className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1">{contact.label}</h3>
+                        <p className="text-xs font-bold text-gray-700">{contact.value}</p>
+                    </div>
+                </div>
+                ))}
+            </div>
+          </div>
+
+          {/* STANDAR LAYANAN */}
+          <div className="lg:col-span-5">
+            <div className="bg-white border border-gray-100 rounded-3xl p-8 shadow-sm h-full flex flex-col justify-between">
+                <div>
+                    <h3 className="text-sm font-black text-blue-900 mb-6 uppercase tracking-widest border-b border-gray-50 pb-4">Standar Layanan</h3>
+                    <ul className="space-y-4">
+                        {[
+                        "Dukungan administrasi & faktur pajak instansi.",
+                        "Privasi data dan informasi klien terjamin.",
+                        "Perubahan pesanan terbatas setelah produksi berjalan.",
+                        "Garansi revisi & penggantian kualitas.",
+                        "Klaim garansi memerlukan dokumentasi unboxing."
+                        ].map((item, idx) => (
+                        <li key={idx} className="flex items-start gap-3 text-[11px] font-medium text-gray-500 leading-relaxed">
+                            <CheckCircle2 className="w-4 h-4 text-green-500 shrink-0" /> {item}
+                        </li>
+                        ))}
+                    </ul>
+                </div>
+                <div className="mt-8 pt-6 border-t border-gray-50 flex items-center justify-between">
+                    <span className="text-[10px] font-bold text-blue-900 uppercase">Trust DHS Souvenir</span>
+                    <div className="flex gap-2">
+                        <div className="w-2 h-2 rounded-full bg-blue-200"></div>
+                        <div className="w-2 h-2 rounded-full bg-blue-400"></div>
+                        <div className="w-2 h-2 rounded-full bg-blue-600"></div>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

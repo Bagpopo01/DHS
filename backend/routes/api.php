@@ -7,7 +7,7 @@ use App\Http\Controllers\Api\VideoShortController;
 use App\Models\Client;
 use App\Models\Product;
 use App\Models\Category;
-
+use App\Http\Controllers\GalleryController;
 
 
 
@@ -27,5 +27,5 @@ Route::get('/clients', function () {
 });
 
 Route::apiResource('products', ProductController::class);
-
+Route::apiResource('galleries', GalleryController::class);
 

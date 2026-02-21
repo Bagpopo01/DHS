@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import ProductDetail from './pages/ProductDetail';
-import Tentang from './pages/Tentang';
+import Galeri from './pages/Galeri'; // ganti Tentang jadi Galeri
 import Kontak from './pages/Kontak';
 import Kategori from './pages/Kategori';
 import { useCart } from './hooks/useCart';
@@ -80,7 +80,8 @@ function App() {
           }
         />
         <Route path="/produk/:id" element={<ProductDetail />} />
-        <Route path="/tentang" element={<Tentang />} />
+       <Route path="/galeri" element={<Galeri />} /> {/* sebelumnya /tentang */}
+
         <Route path="/kontak" element={<Kontak />} />
         <Route path="/kategori" element={<Kategori />} />
         <Route path="*" element={<div className="text-center py-12">Halaman tidak ditemukan</div>} />
