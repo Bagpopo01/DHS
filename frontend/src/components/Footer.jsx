@@ -11,7 +11,7 @@ const BrandLogo = () => (
     />
     <div className="flex flex-col">
       <span className="text-2xl font-black tracking-tight leading-none">
-        DHS<span className="text-blue-500"> Project</span>
+        DIAMETER<span className="text-blue-500"> SOUVENIR</span>
       </span>
       <span className="text-[10px] uppercase tracking-[0.3em] text-blue-400 font-bold">
         Premium Souvenir

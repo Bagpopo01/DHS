@@ -20,13 +20,13 @@ class ClientForm
                     ->unique(ignoreRecord: true),
 
             FileUpload::make('image')
-    ->label('Foto Client')
+    ->label('Gambar/Icon Kontak')
     ->disk('public')
-    ->directory('products/clients')
+    ->directory('contacts')
     ->visibility('public')
     ->image()
     ->imagePreviewHeight('150')
-    ->downloadable() // ✅ tombol download otomatis
+    ->downloadable()
     ->openable(),
     
     // ✅ tombol open otomatis

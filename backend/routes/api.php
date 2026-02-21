@@ -8,8 +8,8 @@ use App\Models\Client;
 use App\Models\Product;
 use App\Models\Category;
 use App\Http\Controllers\GalleryController;
-
-
+use App\Http\Controllers\ContactController;
+use App\Models\Contact;
 
 Route::apiResource('video-shorts', VideoShortController::class);
 Route::get('/video-shorts', [VideoShortController::class, 'index']);
@@ -28,4 +28,7 @@ Route::get('/clients', function () {
 
 Route::apiResource('products', ProductController::class);
 Route::apiResource('galleries', GalleryController::class);
-
+Route::get('/contacts', [ContactController::class, 'index']);
+Route::get('/contacts', function () {
+    return Contact::all();
+});
