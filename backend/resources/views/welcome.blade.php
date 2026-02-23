@@ -4,7 +4,8 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        <title>{{ config('app.name', 'Diameter Souvenir') }}</title>
+<link rel="icon" type="image/png" href="{{ asset('logo-white.png') }}" />a
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">

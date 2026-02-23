@@ -37,8 +37,8 @@ class AdminPanelProvider extends PanelProvider
             ->viteTheme('resources/css/filament/admin/theme.css')
             ->brandName('Diameter Souvenir')
             ->brandLogo(asset('images/LOGO2.png'))
-            ->brandLogoHeight('2.5rem') 
-            ->favicon(asset('favicon.ico'))
+            ->brandLogoHeight('2.5rem')     
+            ->favicon(asset('images/LOGO.png')) // Tambahkan favicon untuk admin panel
             
             // Render Hook untuk teks di bawah logo DHS
             ->renderHook(

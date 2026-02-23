@@ -8,4 +8,9 @@ use Filament\Resources\Pages\CreateRecord;
 class CreateGallery extends CreateRecord
 {
     protected static string $resource = GalleryResource::class;
+       protected function getRedirectUrl(): string
+    {
+        // setelah create, langsung kembali ke halaman index (list categories)
+        return $this->getResource()::getUrl('index');
+    }
 }
