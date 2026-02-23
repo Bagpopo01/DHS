@@ -37,7 +37,7 @@ export default function HeroSection() {
                 className="btn-secondary"
                 onClick={() => {
                   window.open(
-                    'https://wa.me/6281234567890?text=Halo%20Diameter%20Souvenir,%20saya%20ingin%20custom%20souvenir',
+                    'https://wa.me/6285183010279',
                     '_blank'
                   );
                 }}

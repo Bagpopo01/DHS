@@ -6,21 +6,21 @@ function ContactSection() {
     {
       title: "Email",
       text: "Kirim pertanyaan atau penawaran via email",
-      link: "mailto:info@diametersouvenir.com",
+      link: "mailto:info@diametersouvenir.co.id",
       icon: <Mail size={24} />,
       color: "bg-blue-600"
     },
     {
       title: "Telepon",
       text: "Hubungi langsung tim kami",
-      link: "tel:+628123456789",
+      link: "tel:+6285183010279",
       icon: <Phone size={24} />,
       color: "bg-green-600"
     },
     {
       title: "Lokasi",
       text: "Kunjungi workshop & showroom kami",
-      link: "https://maps.google.com?q=diameter+souvenir",
+      link: "https://maps.app.goo.gl/Uk6WCW4DQP8b7frB9",
       icon: <MapPin size={24} />,
       color: "bg-red-600"
     }
@@ -88,7 +88,7 @@ function ContactSection() {
           <motion.a
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            href="https://wa.me/6281234567890?text=Halo%20DHS%20Souvenir,%20saya%20ingin%20konsultasi"
+            href="https://wa.me/6285183010279?text=Halo%20DHS%20Souvenir,%20saya%20ingin%20konsultasi"
             className="inline-flex items-center space-x-3 bg-white text-blue-900 px-10 py-5 rounded-2xl font-black text-lg shadow-xl hover:bg-blue-50 transition-all relative z-10"
           >
             <MessageCircle size={24} />
