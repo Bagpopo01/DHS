@@ -18,26 +18,31 @@ const Kategori = () => {
   const [searchTerm, setSearchTerm] = useState("");
 
   // Fetch data kategori & produk
-  useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      try {
-        const [resCat, resProd] = await Promise.all([
-          fetch("http://127.0.0.1:8000/api/categories"),
-          fetch("http://127.0.0.1:8000/api/products"),
-        ]);
-        const dataCat = await resCat.json();
-        const dataProd = await resProd.json();
-        setCategories(dataCat);
-        setProducts(dataProd);
-      } catch (err) {
-        console.error("Gagal load data:", err);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchData();
-  }, []);
+useEffect(() => {
+  const API_URL = import.meta.env.VITE_API_URL;
+
+  const fetchData = async () => {
+    setLoading(true);
+    try {
+      const [resCat, resProd] = await Promise.all([
+        fetch(`${API_URL}/api/categories`),
+        fetch(`${API_URL}/api/products`),
+      ]);
+
+      const dataCat = await resCat.json();
+      const dataProd = await resProd.json();
+
+      setCategories(dataCat);
+      setProducts(dataProd);
+    } catch (err) {
+      console.error("Gagal load data:", err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  fetchData();
+}, []);
 
   // Sinkronisasi filter dari URL
   useEffect(() => {

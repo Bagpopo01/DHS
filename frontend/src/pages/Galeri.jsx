@@ -6,12 +6,15 @@ export default function Galeri() {
   const [currentIndex, setCurrentIndex] = useState(null); // simpan index aktif
   const [filter, setFilter] = useState("all");
 
-  useEffect(() => {
-    fetch("http://127.0.0.1:8000/api/galleries")
-      .then(res => res.json())
-      .then(data => setGalleryData(data))
-      .catch(err => console.error("Error fetch galleries:", err));
-  }, []);
+useEffect(() => {
+  const API_URL = import.meta.env.VITE_API_URL;
+
+  fetch(`${API_URL}/api/galleries`)
+    .then(res => res.json())
+    .then(data => setGalleryData(data))
+    .catch(err => console.error("Error fetch galleries:", err));
+}, []);
+
 
   const filteredImages =
     filter === "all"

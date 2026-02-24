@@ -17,7 +17,7 @@ const ProductDetail = () => {
   const [selectedImage, setSelectedImage] = useState(0);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
+ useEffect(() => {
     setLoading(true);
     // 1. Ganti localhost ke 127.0.0.1 jika localhost tidak jalan
     fetch(`http://127.0.0.1:8000/api/products/${id}`)

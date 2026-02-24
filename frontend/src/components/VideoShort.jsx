@@ -5,14 +5,14 @@ import { Play, X } from "lucide-react";
 export default function VideoShorts() {
   const [shorts, setShorts] = useState([]);
   const [activeVideo, setActiveVideo] = useState(null);
+useEffect(() => {
+  const API_URL = import.meta.env.VITE_API_URL;
 
-  useEffect(() => {
-    fetch("http://127.0.0.1:8000/api/video-shorts")
-      .then((res) => res.json())
-      .then((data) => setShorts(data.data || data))
-      .catch((err) => console.error("Error fetch shorts:", err));
-  }, []);
-
+  fetch(`${API_URL}/api/video-shorts`)
+    .then((res) => res.json())
+    .then((data) => setShorts(data.data || data))
+    .catch((err) => console.error("Error fetch shorts:", err));
+}, []);
   return (
     <section id="video-short" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -18,8 +18,8 @@ export default function CategoryCard({ category }) {
       className="group cursor-pointer flex flex-col items-center p-4 bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 w-32"
     >
       <div className="w-20 h-20 bg-blue-50 rounded-2xl overflow-hidden mb-3">
-        <img
-  src={`http://127.0.0.1:8000/storage/${category.image.replace(/^public\//, "")}`}
+<img
+  src={`${import.meta.env.VITE_API_URL}/storage/${category.image.replace(/^public\//, "")}`}
   alt={category.name}
   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
   onError={(e) => (e.target.src = "https://via.placeholder.com")}

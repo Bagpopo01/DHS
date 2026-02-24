@@ -7,13 +7,14 @@ export default function Categories() {
   const [categories, setCategories] = useState([]);
   const scrollRef = useRef(null);
 
-  useEffect(() => {
-    fetch('http://localhost:8000/api/categories')
-      .then(res => res.json())
-      .then(data => setCategories(data))
-      .catch(err => console.error("Gagal fetch kategori:", err));
-  }, []);
+useEffect(() => {
+  const API_URL = import.meta.env.VITE_API_URL;
 
+  fetch(`${API_URL}/api/categories`)
+    .then(res => res.json())
+    .then(data => setCategories(data))
+    .catch(err => console.error("Gagal fetch kategori:", err));
+}, []);
   // Logika Auto Scroll yang diperhalus
   useEffect(() => {
     const interval = setInterval(() => {

@@ -4,13 +4,14 @@ import { useEffect, useState } from 'react';
 export default function Clients() {
   const [clients, setClients] = useState([]);
 
-  useEffect(() => {
-    fetch('http://localhost:8000/api/clients')
-      .then(res => res.json())
-      .then(data => setClients(data))
-      .catch(err => console.error("Error loading clients:", err));
-  }, []);
+useEffect(() => {
+  const API_URL = import.meta.env.VITE_API_URL;
 
+  fetch(`${API_URL}/api/clients`)
+    .then(res => res.json())
+    .then(data => setClients(data))
+    .catch(err => console.error("Error loading clients:", err));
+}, []);
   // Kita duplikasi list client agar animasi loopnya tidak terputus (seamless)
   const duplicatedClients = [...clients, ...clients, ...clients];
 

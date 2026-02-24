@@ -19,8 +19,10 @@ export default function Kontak() {
   const [officers, setOfficers] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-  fetch("http://127.0.0.1:8000/api/contacts")
+useEffect(() => {
+  const API_URL = import.meta.env.VITE_API_URL;
+
+  fetch(`${API_URL}/api/contacts`)
     .then((res) => res.json())
     .then((data) => {
       setOfficers(data);
