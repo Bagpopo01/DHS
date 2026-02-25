@@ -32,3 +32,9 @@ Route::get('/contacts', [ContactController::class, 'index']);
 Route::get('/contacts', function () {
     return Contact::all();
 });
+// Tambahkan baris ini di routes/api.php
+Route::get('/kategori', function () {
+    return \App\Models\Category::withCount('products')
+        ->select('id','name','image','slug') // Tambahkan slug jika ada
+        ->get();
+});
