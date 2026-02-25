@@ -20,7 +20,7 @@ const ProductDetail = () => {
  useEffect(() => {
     setLoading(true);
     // 1. Ganti localhost ke 127.0.0.1 jika localhost tidak jalan
-    fetch(`http://127.0.0.1:8000/api/products/${id}`)
+    fetch(`${import.meta.env.VITE_API_URL}/api/products/${id}`)
       .then((res) => {
         if (!res.ok) throw new Error("Gagal mengambil data");
         return res.json();
@@ -70,7 +70,7 @@ const ProductDetail = () => {
   // Handle Gambar (Data kamu images: ["path/foto.jpg"])
   const images = Array.isArray(product.images) ? product.images : [];
   const mainImage = images.length > 0
-  ? `http://127.0.0.1:8000/storage/${images[selectedImage].replace(/^public\//, "")}`
+  ? `${import.meta.env.VITE_API_URL}/storage/${images[selectedImage].replace(/^public\//, "")}`
   : "https://via.placeholder.com";
 
   return (
@@ -121,7 +121,7 @@ const ProductDetail = () => {
           }`}
         >
          <img
-  src={`http://127.0.0.1:8000/storage/${img.replace(/^public\//, "")}`}
+  src={`${import.meta.env.VITE_API_URL}/storage/${img.replace(/^public\//, "")}`}
   className="w-full h-full object-cover"
   alt="thumb"
 />

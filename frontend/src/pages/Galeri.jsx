@@ -69,7 +69,7 @@ useEffect(() => {
             >
               <div className="aspect-square overflow-hidden bg-gray-50">
                 <img
-                  src={`http://127.0.0.1:8000/storage/${item.url}`}
+                  src={`${import.meta.env.VITE_API_URL}/storage/${item.url}`}
                   alt={item.title}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 />
@@ -120,7 +120,7 @@ useEffect(() => {
 
             {/* Gambar aktif */}
             <img
-              src={`http://127.0.0.1:8000/storage/${filteredImages[currentIndex].url}`}
+              src={`${import.meta.env.VITE_API_URL}/storage/${filteredImages[currentIndex].url}`}
               alt={filteredImages[currentIndex].title}
               className="max-w-full max-h-[85vh] rounded-lg shadow-2xl border border-white/20"
             />

@@ -82,7 +82,7 @@ useEffect(() => {
         <div className="w-20 h-20 mx-auto bg-blue-50 rounded-full mb-4 flex items-center justify-center">
           {officer.image ? (
             <img
-              src={`http://127.0.0.1:8000/storage/${officer.image}`}
+              src={`${import.meta.env.VITE_API_URL}/storage/${officer.image}`}
               alt={officer.title}
               className="w-16 h-16 rounded-full border-4 border-white object-cover"
             />
